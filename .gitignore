@@ -6,5 +6,8 @@ build/
 .cache
 *.log
 .swp
+images/
+img/
+img/*
 
 

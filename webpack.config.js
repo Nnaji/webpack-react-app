@@ -1,44 +1,18 @@
-# webpack-react-app
-App development with react and webpack4
-# Tools
-### Requirements
-Nodejs & NPM (For installing and managing packages)
-Alternately:
-Nodejs and yarn(for installing and managing packages)
-
-## Installation
-### Webpack specific tools
-single line installation
-```
-npm install --save-dev webpack webpack-cli webpack-dev-server eslint prettier stylelint eslint-config-prettier eslint-plugin-prettier stylelint-config-prettier stylelint-prettier
-```
-```
-npm init
-npm install --save-dev webpack webpack-cli webpack-dev-server
-npm install --save-dev html-webpack-plugin clean-webpack-plugin
-
-```
-### Linting tools
-```
-npm install --save-dev eslint eslint-config-prettier eslint-plugin-prettier
-
-```
-### Code formating tools
-```
-npm install --save-dev prettier
-npm install --save-dev stylelint stylelint-config-prettier stylelint-prettier
-
-```
-### Adding Babel
-```
-npm install --save-dev @babel/core @babel/preset-env @babel/preset-react babel-loader @babel/cli
-
-```
-### CSS & SASS
-```
-npm install --save-dev mini-css-extract-plugin html-loader css-loader url-loader file-loader node-sass sass-loader
-```
-```
+const webpack = require('webpack');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const path = require('path');
+module.exports = (env) => {
+    console.log(env.mode);
+    return {
+        devtool: 'source-map',
+        mode: env.mode,
+        //Enttry point of the app
+        entry: './src/index.js',
+        output: {
+            filename: 'assets/js/bundle.js',
+        },
         module: {
             rules: [
                 {
@@ -89,4 +63,16 @@ npm install --save-dev mini-css-extract-plugin html-loader css-loader url-loader
                 },
             ],
         },
-```
+        plugins: [
+            new webpack.ProgressPlugin(),
+            new CleanWebpackPlugin(),
+            new HtmlWebpackPlugin({
+                title: 'Webpack react app',
+            }),
+            new MiniCssExtractPlugin({
+                filename: 'assets/css/[name].css',
+                chunkFilename: '[name].css',
+            }),
+        ],
+    };
+};
