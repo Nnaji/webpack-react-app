@@ -12,13 +12,15 @@
         "webpack-dev": "webpack-dev-server",
         "debug": "node --inspect --inspect-brk ./node_modules/webpack/bin/webpack.js",
         "prod": "npm run webpack-dev -- --open --env.mode production --hot --watch",
+        "prod-debug": "npm run debug -- --env.mode production",
         "dev-build": "npm run webpack-dev -- --env.mode production --hot",
         "dev": "npm run webpack-dev -- --open --env.mode development --hot --watch",
-        "build": "npm run dev-rimraf && npm run webpack -- --env.mode production",
         "dev-debug": "npm run debug -- --env.mode development",
+        "build": "npm run dev-rimraf && npm run webpack -- --env.mode production",
         "mocha": "mocha",
         "test": "npm run mocha -- -w",
-        "dev-test": "npm run mocha"
+        "dev-test": "npm run mocha",
+        "start": "npm run dev-rimraf && npm run prod"
     },
     "keywords": [],
     "author": "Kingsley <kingsley.nnaji@gmail.com>",
@@ -53,5 +55,9 @@
         "webpack": "^4.41.5",
         "webpack-cli": "^3.3.10",
         "webpack-dev-server": "^3.10.1"
+    },
+    "dependencies": {
+        "react": "^16.12.0",
+        "react-dom": "^16.12.0"
     }
 }

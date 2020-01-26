@@ -67,6 +67,7 @@ module.exports = (env) => {
             new webpack.ProgressPlugin(),
             new CleanWebpackPlugin(),
             new HtmlWebpackPlugin({
+                template: path.join(__dirname, './src/template/index.html'),
                 title: 'Webpack react app',
             }),
             new MiniCssExtractPlugin({
